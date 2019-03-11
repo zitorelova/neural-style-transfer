@@ -58,6 +58,4 @@ def gram_matrix(tensor):
     gram = torch.mm(flattened, torch.t(flattened))
 
     return gram
-
-print("Successfully imported loaders.py")
     
