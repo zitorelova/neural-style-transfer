@@ -48,6 +48,29 @@ def get_model():
 
     return vgg
 
+def extract_features(img, model, layers=None):
+    """
+    Run an image forward through the given model, collecting layer outputs as features.
+    Default layers are for VGG19 as stated in Gatys et al.
+    """
+
+    if not layers:
+        layers = {'0': 'conv1_1',
+                '5': 'conv2_1',
+                '10': 'conv3_1',
+                '19': 'conv4_1',
+                '21': 'conv4_2',
+                '28': 'conv5_1'}
+
+    features = {}
+    x = img
+    for lname, layer in model._modules.items(): 
+        x = layer(x)
+        if lname in layers:
+            features[layers[lname]] = x 
+
+    return features
+
 def gram_matrix(tensor):
     """
     Compute the gram matrix of the given tensor

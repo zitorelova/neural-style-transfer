@@ -1,11 +1,11 @@
-from utils import load_image, convert_image, get_model, gram_matrix
+from utils import *
 import torch
 import torch.optim as optim
 import cv2
 from argparse import ArgumentParser
-from features import get_features
 from weights import *
 from tqdm import tqdm
+from time import time
 
 # Argument Parsing 
 parser = ArgumentParser(description='Content and style arguments for the neural style transfer model')
@@ -20,13 +20,14 @@ def main():
     """
     Main function for training the Neural Style Transfer model
     """
+    start = time()
     content = load_image(f'./data/{args.content}') # load content image
     style = load_image(f'./data/{args.style}') # load style image
 
     model = get_model()
 
-    content_features = get_features(content, model)
-    style_features = get_features(style, model)
+    content_features = extract_features(content, model)
+    style_features = extract_features(style, model)
     
     style_grams = {layer: gram_matrix(style_features[layer]) for layer in style_features}
  
@@ -39,7 +40,7 @@ def main():
     print("Starting training run")
     for step in tqdm(range(1, steps+1)):
  
-        target_features = get_features(target, model)
+        target_features = extract_features(target, model)
         content_loss = torch.mean((target_features['conv4_2'] - content_features['conv4_2'])**2)
  
         style_loss = 0
@@ -63,7 +64,7 @@ def main():
 
     final = convert_image(target).astype('float64')
     cv2.imwrite('./data/out_img.jpg', final)
-    print("Run completed successfully")
+    print(f"Run completed in {(time() - start) / 60 :.2f} minutes.")
 
 if __name__ == "__main__":
     main()

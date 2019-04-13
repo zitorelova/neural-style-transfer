@@ -1,3 +1,5 @@
+# Weights for each of the features extracted from the model
+
 style_weights = {'conv1_1': 0.8,
                 'conv2_1': 0.8,
                 'conv3_1': 0.5,
