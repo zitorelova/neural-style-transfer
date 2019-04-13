@@ -2,6 +2,7 @@ from utils import *
 import torch
 import torch.optim as optim
 import cv2
+from torchvision.utils import save_image
 from argparse import ArgumentParser
 from weights import *
 from tqdm import tqdm
@@ -62,8 +63,7 @@ def main():
         total_loss.backward()
         optimizer.step()
 
-    final = convert_image(target).astype('float64')
-    cv2.imwrite('./data/out_img.jpg', final) # Save final image
+    save_image(target, 'out_img.jpg') # have final image
     print(f"Run completed in {(time() - start) / 60 :.2f} minutes.")
 
 if __name__ == "__main__":
