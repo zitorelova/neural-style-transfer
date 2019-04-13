@@ -21,8 +21,8 @@ def main():
     Main function for training the Neural Style Transfer model
     """
     start = time()
-    content = load_image(f'./data/{args.content}') # load content image
-    style = load_image(f'./data/{args.style}') # load style image
+    content = load_image(f'./data/{args.content}').to(device) # load content image
+    style = load_image(f'./data/{args.style}', shape=content.shape[-2:]).to(device) # load style image
 
     model = get_model()
 
@@ -63,7 +63,7 @@ def main():
         optimizer.step()
 
     final = convert_image(target).astype('float64')
-    cv2.imwrite('./data/out_img.jpg', final)
+    cv2.imwrite('./data/out_img.jpg', final) # Save final image
     print(f"Run completed in {(time() - start) / 60 :.2f} minutes.")
 
 if __name__ == "__main__":

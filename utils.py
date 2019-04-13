@@ -2,8 +2,6 @@ import numpy as np
 import torch
 from torchvision import transforms, models
 from PIL import Image
-from tqdm import tqdm
-
 
 def load_image(im_path, max_size=400, shape=None):
     """
