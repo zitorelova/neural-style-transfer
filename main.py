@@ -63,7 +63,7 @@ def main():
         total_loss.backward()
         optimizer.step()
 
-    save_image(target, 'out_img.jpg') # have final image
+    save_image(target, './data/out_img.jpg') # save final image
     print(f"Run completed in {(time() - start) / 60 :.2f} minutes.")
 
 if __name__ == "__main__":
