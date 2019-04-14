@@ -7,13 +7,11 @@ The deep learning model is able to take a content image and render it using a gi
 Sample
 
 Content Image
-![](data/content_sample.jpg)
-
+<img src="data/content_sample.jpg" width="400" height="300"/>
 Style Image
-![](data/style_sample.jpg)
-
+<img src="data/style_sample.jpg" width="400" height="300"/>
 Rendered Image
-![](data/out_img.jpg)
+<img src="data/out_img.jpg" width="400" height="300"/>
 
 ### Setup and Training
 
