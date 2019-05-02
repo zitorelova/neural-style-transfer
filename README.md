@@ -28,3 +28,9 @@ You can train using your own images by specifying the `--content` and/or `--styl
 ### References
 
 - [A Neural Algorithm of Artistic Style](https://arxiv.org/abs/1508.06576)
+
+### Acknowledgements
+
+- Content sample photo from [shuttershock.com](https://www.shutterstock.com/image-photo/foodies-food-1029545824?irgwc=1&utm_medium=Affiliate&utm_campaign=TinEye&utm_source=77643&utm_term=)
+
+- Style sample photo is [The Starry Night](https://en.wikipedia.org/wiki/The_Starry_Night) by Vincent van Gogh
